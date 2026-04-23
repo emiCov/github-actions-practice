@@ -1,0 +1,19 @@
+name: Print Issue Content
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  print-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show issue details
+        run: |
+          echo "=== NEW ISSUE CREATED ==="
+          echo "Title: ${{ github.event.issue.title }}"
+          echo "Number: ${{ github.event.issue.number }}"
+          echo "User: ${{ github.event.issue.user.login }}"
+          echo "Body:"
+          echo "${{ github.event.issue.body }}"
